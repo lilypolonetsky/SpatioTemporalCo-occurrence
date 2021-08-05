@@ -6,12 +6,13 @@ class LoadFile:
     def read_file(self, file_path: str):
         pass
 
-    # map the text_file_rdd to be in the form (id, (x, y, z))
+    # map the text_file_rdd to be in the form (id, (x, y, z), [cube_id, cube_id])
     def map_data(self, text_file_rdd):
         pass
 
 class ProcessData:
-    # direct all the data to all of its cubes (where it should be based on coords and duplicate across borders)
+    # use flatMap to get (id, (x,y,z), cube_id) - there may be multiple tuples with the same id since it has been duplicated across cubes
+    # direct all the data to all of its cubes (where it should be based on coords and duplicate across borders) - groupBy
     # sort data in each cube
     # rendenzvous with each other -> (id_1, id_2, co_occur_instance) - use sliding window and hash coords of id_1 and id_2 to get unique instance
     pass
